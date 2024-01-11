@@ -1,18 +1,27 @@
-ALPHABET = ('АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-
-direction = input('Выбери направление: \n(+) - Шифрование \n(-) - Дешифрование:\n ')
-lang = int(input('Выбери язык алфавита: \n0 - Русский \n1 - Английский: \n'))
-step = int(direction + input('Веди число, шаг сдвига (со сдвигом вправо): '))
-text = input('Введите текст для обработки:\n')
+from utils import encode_decode_text
 
 
 def main():
-    for i in text:
-        if i.isalpha():
-            char = ALPHABET[lang][(ALPHABET[lang].index(i.upper()) + step) % len(ALPHABET[lang])]
-            print(char if i.isupper() else char.lower(), end='')
-        else:
-            print(i, end='')
+    while True:
+        try:
+            lang = int(input('Выбери язык алфавита (Choose the language): \n0 - Русский \n1 - English: \n'))
+            if lang in range(2):
+                break
+            else:
+                print("Выбирай 0. Как раз про тебя. (0 or 1 friend.)")
+        except ValueError:
+            print("Ты чё, су*ара! Это сейчас цифра по-твоему была? Малюй 1 или 0 (Try to enter a number 0 or 1 please.)")
+
+    if lang:
+        direction = input('Choose the direction: \n(+) - Encoding \n(-) - Decoding:\n ')
+        step = int(direction + input('Write the number, step: '))
+        text = input('Give me the phrase:\n')
+    else:
+        direction = input('Выбери направление: \n(+) - Шифрование \n(-) - Дешифрование:\n ')
+        step = int(direction + input('Веди число, шаг сдвига: '))
+        text = input('Введите текст для обработки:\n')
+
+    print(encode_decode_text(text, lang, step))
 
 
 if __name__ == '__main__':
