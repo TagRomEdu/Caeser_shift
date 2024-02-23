@@ -10,7 +10,7 @@ def main():
             else:
                 print("Выбирай 0. Как раз про тебя. (0 or 1 friend.)")
         except ValueError:
-            print("Ты чё, су*ара! Это сейчас цифра по-твоему была? Малюй 1 или 0 (Try to enter a number 0 or 1 please.)")
+            print("Зачем же так? Это сейчас цифра по-твоему была? Малюй 1 или 0 (Try to enter a number 0 or 1 please.)")
 
     if lang:
         direction = input('Choose the direction: \n(+) - Encoding \n(-) - Decoding:\n ')
